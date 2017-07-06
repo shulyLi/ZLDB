@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/tool.h
+
+/home/shuly/C++/DB/ZLDB/main/tool/tool.cpp
+tool.h
+/home/shuly/C++/DB/ZLDB/main/tool/tool.h
+

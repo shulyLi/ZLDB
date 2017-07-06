@@ -1,0 +1,8 @@
+/home/shuly/C++/DB/ZLDB/build/CMakeFiles/edit_cache.dir
+/home/shuly/C++/DB/ZLDB/build/CMakeFiles/rebuild_cache.dir
+/home/shuly/C++/DB/ZLDB/build/main/CMakeFiles/rebuild_cache.dir
+/home/shuly/C++/DB/ZLDB/build/main/CMakeFiles/edit_cache.dir
+/home/shuly/C++/DB/ZLDB/build/main/CMakeFiles/main.dir
+/home/shuly/C++/DB/ZLDB/build/main/tool/CMakeFiles/rebuild_cache.dir
+/home/shuly/C++/DB/ZLDB/build/main/tool/CMakeFiles/edit_cache.dir
+/home/shuly/C++/DB/ZLDB/build/main/tool/CMakeFiles/tool.dir

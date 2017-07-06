@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/main.dir/main.cpp.o  -o ../libs/main  -L/home/shuly/C++/DB/ZLDB/build/libs  -L/usr/local/libs -rdynamic ../libs/libtool.so -Wl,-rpath,/home/shuly/C++/DB/ZLDB/build/libs:/usr/local/libs 

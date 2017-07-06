@@ -1,0 +1,40 @@
+
+
+
+
+
+一个表由　索引段，数据段　构成：
+
+    1．目前我们首要任务先不落地索引段，　只写数据断
+    2．数据段有多个extent构成，相应的　一个extent占用一个1M
+    3. 一个extent由64个page构成，page是最小的管理单位，这里面的内容比较多:相应的　一个page也是一个索引的叶子节点，采用b+tree存储(node内容链表)
+    {
+        FileHeader{
+             FIL_PAGE_SPACE_OR_CHKSUM  4字节                        page所属的表空间的space id
+             FIL_PAGE_SPACE_CHKSUM     4字节                        page所属的表空间的check_sum　校验用
+             FIL_PAGE_OFFSET           4字节                        page no，一般是在表空间的物理偏移量
+             FIL_PAGE_PREV             4字节                        前一页的page no (B+tree的叶子节点是通过链表串起来的，有前后关系)
+             FIL_PAGE_NEXT             4字节                        后一页的page no
+             FIL_PAGE_TYPE             2字节                        目前　只有　B+数叶子节点，还没有索引断和　别的索引（hash之类的）
+             FIL_PAGE_FILE_FLUSH_LSN   8字节                        代表文件至少被更新的位置，只在第一个extend的第一个page内有效，好像用不倒，保留也好　
+        }，
+        pageHeader: {
+            
+        },
+        pageBody:{
+
+        },
+        pageTail:{
+            FIL_PAGE_END_LSN          8字节                         与header中的对比，防止出错 
+        }
+        
+    }
+    
+    4.行内容存储采用Compact,遗留问题溢出数据怎么办
+    
+    
+    
+    
+    
+
+    结构参考：　http://blog.csdn.net/beiigang/article/details/42175995
