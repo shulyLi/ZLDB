@@ -10,19 +10,29 @@
     3. 一个extent由64个page构成，page是最小的管理单位，这里面的内容比较多:相应的　一个page也是一个索引的叶子节点，采用b+tree存储(node内容链表)
     {
         FileHeader{
-             FIL_PAGE_SPACE_OR_CHKSUM  4字节                        page所属的表空间的space id
-             FIL_PAGE_SPACE_CHKSUM     4字节                        page所属的表空间的check_sum　校验用
-             FIL_PAGE_OFFSET           4字节                        page no，一般是在表空间的物理偏移量
-             FIL_PAGE_PREV             4字节                        前一页的page no (B+tree的叶子节点是通过链表串起来的，有前后关系)
-             FIL_PAGE_NEXT             4字节                        后一页的page no
-             FIL_PAGE_TYPE             2字节                        目前　只有　B+数叶子节点，还没有索引断和　别的索引（hash之类的）
-             FIL_PAGE_FILE_FLUSH_LSN   8字节                        代表文件至少被更新的位置，只在第一个extend的第一个page内有效，好像用不倒，保留也好　
+            FIL_PAGE_CHKSUM           4字节                        checkSum 检查页是否正确
+            FIL_PAGE_OFFSET           4字节                        在表空间的物理偏移量(表空间是1G的话， 查找(10, 1) 代表找第十extent的第二个页)
+            FIL_PAGE_PREV             4字节                        前一页的page no (B+tree的叶子节点是通过链表串起来的，有前后关系)
+            FIL_PAGE_NEXT             4字节                        后一页的page no
+            FIL_PAGE_TYPE             2字节                        目前　只有　B+数叶子节点，还没有索引断和　别的索引（hash之类的）
+            FIL_PAGE_PACE             4字节                        属于哪个表空间
+            FIL_PAGE_FILE_FLUSH_LSN   8字节                        最后的更新序列号.
         }，
         pageHeader: {
-            
+            PAGE_RECORD_N             2字节                        这个页内记录个数
+            PAGE_LEVEL                2字节                        在第几层 
+            PAGE_LOCK                  
         },
         pageBody:{
-
+            dataPace : {
+                MIN
+                    ~~~~~data
+                MAX
+            
+            }, 
+            freePace : {
+                ~~~ free column
+            }
         },
         pageTail:{
             FIL_PAGE_END_LSN          8字节                         与header中的对比，防止出错 
@@ -30,11 +40,9 @@
         
     }
     
-    4.行内容存储采用Compact,遗留问题溢出数据怎么办
-    
-    
-    
-    
-    
+    4.行内容存储采用Redundant ,遗留问题溢出数据怎么办
+        
+        
 
+    每个 column的 大小 问题
     结构参考：　http://blog.csdn.net/beiigang/article/details/42175995
